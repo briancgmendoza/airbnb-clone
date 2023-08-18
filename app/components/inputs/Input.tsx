@@ -1,13 +1,13 @@
 'use client';
 
-import { BiDollar } from "react-icons/bi";
+import { TbCurrencyPeso } from "react-icons/tb";
 import { IInput } from "./Interface";
 
 const Input: React.FC<IInput> = ({ id, label, type, disabled, formatPrice, required, register, errors }: IInput) => {
     return (
         <div className="w-full relative">
             {formatPrice && (
-                <BiDollar
+                <TbCurrencyPeso
                     size={24}
                     className='text-neutral-700 absolute top-5 left-2'
                 />
