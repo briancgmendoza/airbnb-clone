@@ -38,3 +38,8 @@ export interface ICounter {
     value: number;
     onChange: (value: number) => void;
 }
+
+export interface IImageUpload {
+    onChange: (value: string) => void;
+    value: string;
+}
