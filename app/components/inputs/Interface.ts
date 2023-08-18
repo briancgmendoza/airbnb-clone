@@ -31,3 +31,10 @@ export interface ICountrySelect {
     value?: CountrySelectValue;
     onChange: (value: CountrySelectValue) => void;
 }
+
+export interface ICounter {
+    title: string;
+    subtitle: string;
+    value: number;
+    onChange: (value: number) => void;
+}
