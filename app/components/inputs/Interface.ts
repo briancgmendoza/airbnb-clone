@@ -1,4 +1,5 @@
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
+import { IconType } from "react-icons";
 
 export interface IInput {
     id: string;
@@ -9,4 +10,11 @@ export interface IInput {
     required?: boolean;
     register: UseFormRegister<FieldValues>;
     errors: FieldErrors
+}
+
+export interface ICategoryInput {
+    onClick: (value: string) => void;
+    selected?: boolean;
+    label: string;
+    icon: IconType
 }
