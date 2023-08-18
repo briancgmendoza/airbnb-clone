@@ -33,3 +33,7 @@ export interface ICategoryBox {
     icon: IconType;
     selected?: boolean;
 }
+
+export interface IMap {
+    center?: number[]
+}

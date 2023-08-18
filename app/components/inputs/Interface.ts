@@ -18,3 +18,16 @@ export interface ICategoryInput {
     label: string;
     icon: IconType
 }
+
+export type CountrySelectValue = {
+    flag: string;
+    label: string;
+    latlng: number[];
+    region: string;
+    value: string;
+}
+
+export interface ICountrySelect {
+    value?: CountrySelectValue;
+    onChange: (value: CountrySelectValue) => void;
+}
