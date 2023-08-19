@@ -1,12 +1,4 @@
-import { User } from "@prisma/client";
-
-export type SafeUser = Omit<
-    User,
-    'createdAt' | 'updatedAt' | 'emailVerified'> & {
-        createdAt: string;
-        updatedAt: string;
-        emailVerified: string | null;
-    }
+import { SafeUser } from "@/app/types/Types";
 
 export interface IUser {
     currentUser?: SafeUser | null;

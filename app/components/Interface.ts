@@ -1,4 +1,5 @@
 import { IconType } from "react-icons";
+import { SafeUser } from "../types/Types";
 
 export interface IContainer {
     children: React.ReactNode;
@@ -36,4 +37,15 @@ export interface ICategoryBox {
 
 export interface IMap {
     center?: number[]
+}
+
+export interface IEmptyState {
+    title?: string;
+    subtitle?: string;
+    showReset?: boolean;
+}
+
+export interface IHeartButton {
+    listingId: string;
+    currentUser?: SafeUser | null;
 }
