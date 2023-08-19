@@ -1,16 +1,8 @@
-import { SafeUser } from "@/app/types/Types";
-import { Listing, Reservation } from "@prisma/client";
-
-export type SafeListing = Omit<
-    Listing,
-    'createdAt' | 'updatedAt' | 'emailVerified'> & {
-        createdAt: string;
-        updatedAt: string;
-        emailVerified: string | null;
-    }
+import { SafeUser, SafeListing } from "@/app/types/Types";
+import { Reservation } from "@prisma/client";
 
 export interface IListing {
-    data: Listing;
+    data: SafeListing;
     reservation?: Reservation;
     onAction?: (id: string) => void;
     disabled?: boolean;

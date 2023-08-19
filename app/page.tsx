@@ -1,4 +1,3 @@
-import { Listing } from "@prisma/client";
 import { getListings } from "./actions/getListings";
 import ClientOnly from "./components/ClientOnly";
 import Container from "./components/Container";
@@ -32,7 +31,7 @@ export default async function Home() {
             2xl:grid-cols-6
             gap-8"
             >
-          {listings.map((listing: any) => {
+          {listings.map((listing) => {
             return (
               <ListingCard
                 key={listing.id}
