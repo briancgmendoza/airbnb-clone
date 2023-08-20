@@ -1,8 +1,8 @@
 import prisma from '@/app/libs/prismadb'
 
-import { IGetReservation } from './Interface'
+import { IGetReservations } from './Interface'
 
-export const getReservations = async (params: IGetReservation) => {
+export const getReservations = async (params: IGetReservations) => {
     try {
         const { listingId, userId, authorId } = params;
         const query: any = {};
@@ -16,13 +16,16 @@ export const getReservations = async (params: IGetReservation) => {
         }
 
         if (authorId) {
-            query.authorId = authorId;
+            query.listing = { userId: authorId };
         }
 
         const reservations = await prisma.reservation.findMany({
             where: query,
             include: {
                 listing: true
+            },
+            orderBy: {
+                createdAt: 'desc'
             }
         });
 

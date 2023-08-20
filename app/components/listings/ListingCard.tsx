@@ -5,11 +5,11 @@ import { useRouter } from "next/navigation";
 import Image from 'next/image'
 import useCountries from "@/app/hooks/useCountries";
 import { format } from "date-fns";
-import { IListing } from "./Interface";
+import { IListingCard } from "./Interface";
 import HeartButton from "../HeartButton";
 import Button from "../Button";
 
-const ListingCard: React.FC<IListing> = ({
+const ListingCard: React.FC<IListingCard> = ({
     data,
     reservation,
     onAction,
@@ -17,7 +17,7 @@ const ListingCard: React.FC<IListing> = ({
     actionLabel,
     actionId = '',
     currentUser
-    }: IListing) => {
+}: IListingCard) => {
         const router = useRouter();
         const { getByValue } = useCountries();
         const location = getByValue(data.locationValue);
@@ -51,7 +51,7 @@ const ListingCard: React.FC<IListing> = ({
     return (
         <div
             onClick={() => router.push(`/listings/${data.id}`)}
-            className="col-span-1 cursor-pointer-group"
+            className="col-span-1 cursor-pointer"
             >
                 <div className="flex flex-col gap-2 w-full">
                     <div
@@ -90,7 +90,7 @@ const ListingCard: React.FC<IListing> = ({
                     </div>
                     <div className="flex flex-row items-center gap-1">
                         <div className="font-semibold">
-                            ₱{price}
+                            ₱{price.toLocaleString()}
                         </div>
                         {!reservation && (
                             <div className="font-light ">night</div>

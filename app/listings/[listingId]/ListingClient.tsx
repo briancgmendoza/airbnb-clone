@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation';
 import { differenceInCalendarDays, eachDayOfInterval } from 'date-fns';
 import axios from 'axios';
-import toast from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import { Range } from 'react-date-range';
 
 import Container from '@/app/components/Container'
@@ -41,13 +41,15 @@ const ListingClient: React.FC<IListingClient> = ({ listing, currentUser, reserva
             listingId: listing?.id
         })
         .then(() => {
-            toast.success('Listing reserved!')
-            setDateRange(initialDateRange)
-            // redirect to /trips
+            toast.success('Listing reserved!');
+            setDateRange(initialDateRange);
+            router.push('/trips');
             router.refresh();
         })
-        .catch(() => toast.error('Something went wrong.'))
-        .finally(() => setIsLoading(false))
+        .catch((error) => toast.error(`Reservation failed due to ${error}.`))
+        .finally(() => {
+            setIsLoading(false);
+        })
     }, [totalPrice, dateRange, listing?.id, router, currentUser, loginModal]);
 
     useEffect(() => {

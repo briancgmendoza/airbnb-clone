@@ -1,11 +1,10 @@
-import { SafeUser, SafeListing } from "@/app/types/Types";
-import { Reservation } from "@prisma/client";
+import { SafeUser, SafeListing, SafeReservation } from "@/app/types/Types";
 import { IconType } from "react-icons";
 import { Range } from "react-date-range";
 
-export interface IListing {
+export interface IListingCard {
     data: SafeListing;
-    reservation?: Reservation;
+    reservation?: SafeReservation;
     onAction?: (id: string) => void;
     disabled?: boolean;
     actionLabel?: string;

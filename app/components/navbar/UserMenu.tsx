@@ -1,16 +1,20 @@
 'use client';
 
-import { AiOutlineMenu } from 'react-icons/ai'
-import Avatar from '../Avatar';
 import { useCallback, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { signOut } from 'next-auth/react';
+import { AiOutlineMenu } from 'react-icons/ai';
+
+import Avatar from '../Avatar';
 import MenuItem from './MenuItem';
 import useRegisterModal from '@/app/hooks/useRegisterModal';
 import useLoginModal from '@/app/hooks/useLoginModal';
 import useRentModal from '@/app/hooks/useRentModal';
+
 import { IUser } from './Interface';
-import { signOut } from 'next-auth/react';
 
 const UserMenu: React.FC<IUser> = ({ currentUser }: IUser) => {
+    const router = useRouter();
     const registerModal = useRegisterModal();
     const loginModal = useLoginModal();
     const rentModal = useRentModal();
@@ -50,19 +54,19 @@ const UserMenu: React.FC<IUser> = ({ currentUser }: IUser) => {
                         {currentUser ? (
                             <>
                                 <MenuItem
-                                    onClick={() => {}}
+                                    onClick={() => router.push('/trips')}
                                     label='My trips'
                                 />
                                 <MenuItem
-                                    onClick={() => {}}
+                                    onClick={() => router.push('/favorites')}
                                     label='My Favorites'
                                 />
                                 <MenuItem
-                                    onClick={() => { }}
+                                    onClick={() => router.push('/reservations')}
                                     label='My reservations'
                                 />
                                 <MenuItem
-                                    onClick={() => { }}
+                                    onClick={() => router.push('/properties')}
                                     label='My properties'
                                 />
                                 <MenuItem
