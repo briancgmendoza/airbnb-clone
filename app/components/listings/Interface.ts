@@ -1,6 +1,7 @@
 import { SafeUser, SafeListing } from "@/app/types/Types";
 import { Reservation } from "@prisma/client";
 import { IconType } from "react-icons";
+import { Range } from "react-date-range";
 
 export interface IListing {
     data: SafeListing;
@@ -38,4 +39,14 @@ export interface IListingCategory {
     label: string;
     icon: IconType;
     description: string;
+}
+
+export interface IListingReservation {
+    price: number;
+    totalPrice: number;
+    onChangeDate: (value: Range) => void;
+    dateRange: Range;
+    onSubmit: () => void;
+    disabled: boolean;
+    disabledDates: Date[];
 }

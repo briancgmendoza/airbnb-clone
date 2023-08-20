@@ -6,7 +6,7 @@ export interface IListingPage {
 }
 
 export interface IListingClient {
-    reservation?: Reservation[]
+    reservations?: Reservation[]
     listing: SafeListing & {
         user: SafeUser
     };

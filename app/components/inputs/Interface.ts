@@ -1,3 +1,4 @@
+import { Range, RangeKeyDict } from "react-date-range";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import { IconType } from "react-icons";
 
@@ -42,4 +43,10 @@ export interface ICounter {
 export interface IImageUpload {
     onChange: (value: string) => void;
     value: string;
+}
+
+export interface ICalendar {
+    value: Range;
+    disabledDates?: Date[];
+    onChange: (value: RangeKeyDict) => void;
 }
