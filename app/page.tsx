@@ -4,10 +4,11 @@ import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
 import ListingCard from "./components/listings/ListingCard";
 import getCurrentUser from "./actions/getCurrentUser";
+import { IHomePage } from "./Interface";
 
-export default async function Home() {
-  const listings = await getListings();
+export default async function Home({ searchParams }: IHomePage) {
   const currentUser = await getCurrentUser();
+  const listings = await getListings(searchParams);
 
   if(listings.length === 0) {
     return (

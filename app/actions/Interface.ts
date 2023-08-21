@@ -1,3 +1,7 @@
+export interface IGetListings {
+    userId?: string;
+}
+
 export interface IGetListingById {
     listingId?: string;
 }
