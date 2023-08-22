@@ -83,3 +83,5 @@ export const getListings = async (params: IGetListings) => {
         throw new Error(error)
     }
 }
+
+export default getListings
