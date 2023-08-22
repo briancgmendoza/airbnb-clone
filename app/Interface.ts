@@ -1,7 +1,7 @@
 import { IGetListings } from "./actions/Interface";
 
 export interface IHomePage {
-    searchParams: IGetListings
+    searchParams: IGetListings;
 }
 
 export interface IErrorState {
