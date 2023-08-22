@@ -19,6 +19,7 @@ import Input from '../inputs/Input';
 import { toast } from 'react-hot-toast';
 import Button from '../Button';
 import { useRouter } from 'next/navigation';
+import Loader from '../Loader';
 
 const LoginModal = () => {
     const router = useRouter();
@@ -111,7 +112,7 @@ const LoginModal = () => {
 
             <div className='text-neutral-500 text-center mt-4 font-light'>
                 <div className='flex flex-row items-center justify-center gap-2'>
-                    <div>Don't have an account yet?</div>
+                    <div>Dont have an account yet?</div>
                     <div
                         className='text-neutral-800 cursor-pointer hover:underline'
                         onClick={toggle}>
