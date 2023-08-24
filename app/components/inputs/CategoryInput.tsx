@@ -1,12 +1,16 @@
-'use client';
+"use client";
 
-import { ICategoryInput } from "./Interface"
+import { ICategoryInput } from "./Interface";
 
-const CategoryInput: React.FC<ICategoryInput> = ({ onClick, selected, label, icon: Icon }: ICategoryInput) => {
-    return (
-        <div
-            onClick={() => onClick(label)}
-            className={`
+const CategoryInput: React.FC<ICategoryInput> = ({
+    onClick,
+    selected,
+    label,
+    icon: Icon
+}: ICategoryInput) => (
+    <div
+        onClick={() => onClick(label)}
+        className={`
                 rounded-xl
                 border-2
                 p-4
@@ -16,15 +20,14 @@ const CategoryInput: React.FC<ICategoryInput> = ({ onClick, selected, label, ico
                 hover:border-black
                 transition
                 cursor-pointer
-                ${selected ? 'border-black':'border-neutral-200'}
+                ${selected ? "border-black" : "border-neutral-200"}
             `}
-        >
-            <Icon size={30}/>
-            <div className="font-semibold">
-                {label}
-            </div>
+    >
+        <Icon size={30} />
+        <div className="font-semibold">
+            {label}
         </div>
-    )
-}
+    </div>
+)
 
 export default CategoryInput

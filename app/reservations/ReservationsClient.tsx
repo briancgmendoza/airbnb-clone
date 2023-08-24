@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
 import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
-import axios from "axios";
 import { toast } from "react-hot-toast";
+import axios from "axios";
 
 import Container from "../components/Container";
 import Heading from "../components/Heading";
@@ -22,14 +22,14 @@ const ReservationsClient: React.FC<IReservationsClient> = ({
         setDeletingId(id);
 
         axios.delete(`/api/reservations/${id}`)
-        .then(() => {
-            toast.success("Reservation cancelled.")
-            router.refresh()
-        })
-        .catch(() => toast.error("Cancelling reservation failed."))
-        .finally(() => setDeletingId(""));
+            .then(() => {
+                toast.success("Reservation cancelled.")
+                router.refresh();
+            })
+            .catch(() => toast.error("Cancelling reservation failed."))
+            .finally(() => setDeletingId(""));
 
-    },[router])
+    },[router]);
 
     return (
         <Container>

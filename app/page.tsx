@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 import ClientOnly from "./components/ClientOnly";
 import Container from "./components/Container";
@@ -34,17 +34,16 @@ export default async function Home({ searchParams }: IHomePage) {
             lg:grid-cols-4
             xl:grid-cols-5
             2xl:grid-cols-6
-            gap-8"
-            >
-          {listings.map((listing) => {
-            return (
-              <ListingCard
-                key={listing.id}
-                currentUser={currentUser}
-                data={listing}
-              />
-            )
-          })}
+            gap-8
+          "
+        >
+          {listings.map((listing) => (
+            <ListingCard
+              key={listing.id}
+              currentUser={currentUser}
+              data={listing}
+            />
+          ))}
             </div>
       </Container>
     </ClientOnly>

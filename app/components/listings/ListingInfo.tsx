@@ -1,12 +1,14 @@
-'use client';
+"use client";
+
+import dynamic from "next/dynamic";
 
 import useCountries from "@/app/hooks/useCountries";
 import Avatar from "../Avatar";
 import ListingCategory from "./ListingCategory";
-import { IListingInfo } from "./Interface";
-import dynamic from "next/dynamic";
 
-const Map = dynamic(() => import('../Map'), { ssr: false })
+import { IListingInfo } from "./Interface";
+
+const Map = dynamic(() => import("../Map"), { ssr: false })
 
 const ListingInfo: React.FC<IListingInfo> = ({
     user,
@@ -18,7 +20,6 @@ const ListingInfo: React.FC<IListingInfo> = ({
     locationValue
 }: IListingInfo) => {
     const { getByValue } = useCountries();
-
     const coordinates = getByValue(locationValue)?.latlng;
 
     return (

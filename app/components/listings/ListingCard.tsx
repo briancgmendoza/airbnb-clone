@@ -1,13 +1,15 @@
-'use client';
+"use client";
 
 import { useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import Image from 'next/image'
-import useCountries from "@/app/hooks/useCountries";
+import Image from "next/image";
 import { format } from "date-fns";
-import { IListingCard } from "./Interface";
+
+import useCountries from "@/app/hooks/useCountries";
 import HeartButton from "../HeartButton";
 import Button from "../Button";
+
+import { IListingCard } from "./Interface";
 
 const ListingCard: React.FC<IListingCard> = ({
     data,
@@ -29,15 +31,15 @@ const ListingCard: React.FC<IListingCard> = ({
 
             onAction?.(actionId);
 
-        }, [onAction, actionId, disabled])
+        }, [onAction, actionId, disabled]);
 
         const price = useMemo(() => {
             if (reservation) {
                 return reservation.totalPrice
             }
 
-            return data.price
-        }, [reservation, data.price])
+            return data.price;
+        }, [reservation, data.price]);
 
         const reservationDate = useMemo(() => {
             if(!reservation) return null;
@@ -45,8 +47,8 @@ const ListingCard: React.FC<IListingCard> = ({
             const start = new Date(reservation.startDate)
             const end = new Date(reservation.endDate)
 
-            return `${format(start, 'PP')} - ${format(end, 'PP')}`
-        }, [reservation])
+            return `${format(start, 'PP')} - ${format(end, 'PP')}`;
+        }, [reservation]);
 
     return (
         <div

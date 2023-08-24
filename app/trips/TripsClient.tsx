@@ -1,37 +1,37 @@
-'use client';
+"use client";
 
-import { useCallback, useState } from 'react';
-import { useRouter } from 'next/navigation'
-import axios from 'axios';
-import { toast } from 'react-hot-toast';
+import { useCallback, useState } from "react";
+import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
+import axios from "axios";
 
-import Container from '../components/Container'
-import Heading from '../components/Heading'
-import ListingCard from '../components/listings/ListingCard';
+import Container from "../components/Container";
+import Heading from "../components/Heading";
+import ListingCard from "../components/listings/ListingCard";
 
-import { ITripsClient } from './Interface'
+import { ITripsClient } from "./Interface";
 
 const TripsClient: React.FC<ITripsClient> = ({
     reservations,
     currentUser
 }: ITripsClient) => {
     const router = useRouter();
-    const [deletingId, setDeletingId] = useState<string>('');
+    const [deletingId, setDeletingId] = useState<string>("");
 
     const onCancel = useCallback((id: string) => {
         setDeletingId(id);
 
         axios.delete(`/api/reservations/${id}`)
-        .then(() => {
-            toast.success('Reservation cancelled.');
-            router.refresh();
-        })
-        .catch((error) => {
-            toast.error(error?.response?.data?.error)
-        })
-        .finally(() => {
-            setDeletingId('');
-        })
+            .then(() => {
+                toast.success("Reservation cancelled.");
+                router.refresh();
+            })
+            .catch((error) => {
+                toast.error(error?.response?.data?.error);
+            })
+            .finally(() => {
+                setDeletingId("");
+            })
     }, [router]);
 
     return (
@@ -61,7 +61,7 @@ const TripsClient: React.FC<ITripsClient> = ({
                         actionId={reservation.id}
                         onAction={onCancel}
                         disabled={deletingId === reservation.id}
-                        actionLabel='Cancel reservation'
+                        actionLabel="Cancel reservation"
                         currentUser={currentUser}
                     />
                 ))}

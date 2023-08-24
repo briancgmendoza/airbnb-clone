@@ -10,14 +10,14 @@ export interface IInput {
     formatPrice?: boolean;
     required?: boolean;
     register: UseFormRegister<FieldValues>;
-    errors: FieldErrors
+    errors: FieldErrors;
 }
 
 export interface ICategoryInput {
     onClick: (value: string) => void;
     selected?: boolean;
     label: string;
-    icon: IconType
+    icon: IconType;
 }
 
 export type CountrySelectValue = {

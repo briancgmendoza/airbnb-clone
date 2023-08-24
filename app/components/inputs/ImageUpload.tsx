@@ -1,20 +1,24 @@
-'use client';
+"use client";
 
 import { useCallback } from "react";
+import Image from "next/image";
 import { CldUploadWidget } from "next-cloudinary";
-import Image from 'next/image'
 import { TbPhotoPlus } from "react-icons/tb";
+
 import { IImageUpload } from "./Interface";
 
 declare global {
     var cloudinary: any;
 }
 
-const ImageUpload: React.FC<IImageUpload> = ({ value, onChange }: IImageUpload) => {
+const ImageUpload: React.FC<IImageUpload> = ({
+    value,
+    onChange
+}: IImageUpload) => {
 
     const handleUpload = useCallback((result: any) => {
         onChange(result.info.secure_url)
-    }, [onChange])
+    }, [onChange]);
 
     return (
         <CldUploadWidget
@@ -41,7 +45,8 @@ const ImageUpload: React.FC<IImageUpload> = ({ value, onChange }: IImageUpload) 
                             jusity-center
                             items-center
                             gap-4
-                            text-neutral-600"
+                            text-neutral-600
+                        "
                         onClick={() => open?.()}
                         >
                             <TbPhotoPlus size={50}/>
@@ -51,12 +56,12 @@ const ImageUpload: React.FC<IImageUpload> = ({ value, onChange }: IImageUpload) 
                                     <Image
                                         alt="upload"
                                         fill
-                                        style={{ objectFit: 'cover' }}
+                                        style={{ objectFit: "cover" }}
                                         src={value}
                                     />
                                 </div>
                             )}
-                        </div>
+                    </div>
                 )
             }}
         </CldUploadWidget>

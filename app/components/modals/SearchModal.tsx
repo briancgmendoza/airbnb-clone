@@ -1,19 +1,20 @@
-'use client';
+"use client";
 
 import { useCallback, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Range } from "react-date-range";
-import { CountrySelectValue } from "../inputs/Interface";
-import dynamic from "next/dynamic";
 import qs from "query-string";
+import dynamic from "next/dynamic";
 import { formatISO } from "date-fns";
 
 import Modal from "./Modal";
-import useSearchModal from "@/app/hooks/useSearchModal";
 import Heading from "../Heading";
+import Counter from "../inputs/Counter";
 import CountrySelect from "../inputs/CountrySelect";
 import Calendar from "../inputs/Calendar";
-import Counter from "../inputs/Counter";
+import useSearchModal from "@/app/hooks/useSearchModal";
+
+import { CountrySelectValue } from "../inputs/Interface";
 
 enum STEPS {
     LOCATION = 0,
@@ -26,28 +27,28 @@ const SearchModal = () => {
     const params = useSearchParams();
     const searchModal = useSearchModal();
 
-    const [location, setLocation] = useState<CountrySelectValue>()
-    const [step, setStep] = useState<STEPS>(STEPS.LOCATION)
+    const [location, setLocation] = useState<CountrySelectValue>();
+    const [step, setStep] = useState<STEPS>(STEPS.LOCATION);
     const [guestCount, setGuestCount] = useState<number>(1);
     const [roomCount, setRoomCount] = useState<number>(1);
     const [bathroomCount, setBathroomCount] = useState<number>(1);
     const [dateRange, setDateRange] = useState<Range>({
         startDate: new Date(),
         endDate: new Date(),
-        key: 'selection'
+        key: "selection"
     });
 
-    const Map = useMemo(() => dynamic(() => import('../Map'), {
+    const Map = useMemo(() => dynamic(() => import("../Map"), {
         ssr: false
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }), [location])
+    }), [location]);
 
     const onBack = useCallback(() => {
-        setStep((value) => value - 1)
+        setStep((value) => value - 1);
     }, []);
 
     const onNext = useCallback(() => {
-        setStep((value) => value + 1)
+        setStep((value) => value + 1);
     }, []);
 
     const onSubmit = useCallback(async() => {
@@ -68,22 +69,22 @@ const SearchModal = () => {
         }
 
         if(dateRange.startDate) {
-            updatedQuery.startDate = formatISO(dateRange.startDate)
+            updatedQuery.startDate = formatISO(dateRange.startDate);
         }
 
         if(dateRange.endDate) {
-            updatedQuery.endDate = formatISO(dateRange.endDate)
+            updatedQuery.endDate = formatISO(dateRange.endDate);
         }
 
         const url = qs.stringifyUrl({
-            url: '/',
+            url: "/",
             query: updatedQuery,
         }, { skipNull: true });
 
         setStep(STEPS.LOCATION);
         searchModal.onClose();
-
         router.push(url);
+
     }, [
         step,
         searchModal,
@@ -99,10 +100,10 @@ const SearchModal = () => {
 
     const actionLabel = useMemo(() => {
         if(step === STEPS.INFO) {
-            return 'Search'
+            return "Search";
         }
 
-        return 'Next'
+        return "Next";
     }, [step]);
 
     const secondaryActionLabel = useMemo(() => {
@@ -110,7 +111,7 @@ const SearchModal = () => {
             return undefined;
         }
 
-        return 'Back'
+        return "Back"
     }, [step]);
 
     let bodyContent = (

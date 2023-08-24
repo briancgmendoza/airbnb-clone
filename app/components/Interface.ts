@@ -30,13 +30,12 @@ export interface IAvatar {
 
 export interface ICategoryBox {
     label: string;
-    description?: string;
     icon: IconType;
     selected?: boolean;
 }
 
 export interface IMap {
-    center?: number[]
+    center?: number[];
 }
 
 export interface IEmptyState {

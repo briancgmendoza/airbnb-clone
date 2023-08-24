@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 
-
-import prisma from '@/app/libs/prismadb';
 import getCurrentUser from "@/app/actions/getCurrentUser";
+import prisma from '@/app/libs/prismadb';
+
 import { IParams } from "./Interface";
 
 export const DELETE = async (request: Request, { params }: { params: IParams }) => {

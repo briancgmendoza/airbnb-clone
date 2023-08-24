@@ -14,17 +14,17 @@ export const getFavoriteListings = async () => {
                     in: [...(currentUser.favoriteIds || [])]
                 }
             }
-        })
+        });
 
         const safeFavorite = favorites.map((favorite) => ({
             ...favorite,
             createdAt: favorite.createdAt.toISOString()
-        }))
+        }));
 
-        return safeFavorite
+        return safeFavorite;
 
     } catch(error: any) {
-        throw new Error(error)
+        throw new Error(error);
     }
 }
 

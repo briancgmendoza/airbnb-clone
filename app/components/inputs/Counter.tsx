@@ -1,30 +1,37 @@
-'use client';
+"use client";
 
-import React, { useCallback } from 'react'
-import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
-import { ICounter } from './Interface';
+import React, { useCallback } from "react";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
-const Counter: React.FC<ICounter> = ({ title, subtitle, value, onChange }: ICounter) => {
+import { ICounter } from "./Interface";
+
+const Counter: React.FC<ICounter> = ({
+    title,
+    subtitle,
+    value,
+    onChange
+}: ICounter) => {
     const onAdd = useCallback(() => {
         onChange(value + 1)
-    }, [onChange, value])
+    }, [onChange, value]);
 
     const onReduce = useCallback(() => {
         if(value === 1) return;
         onChange(value - 1);
-    }, [onChange, value])
+    }, [onChange, value]);
+
     return (
-        <div className='flex flex-row items-center justify-between'>
-            <div className='flex flex-col'>
-                <div className='font-medium'>
+        <div className="flex flex-row items-center justify-between">
+            <div className="flex flex-col">
+                <div className="font-medium">
                     {title}
                 </div>
-                <div className='font-light text-gray-600'>{subtitle}</div>
+                <div className="font-light text-gray-600">{subtitle}</div>
             </div>
-            <div className='flex flex-row items-center gap-4'>
+            <div className="flex flex-row items-center gap-4">
                 <div
                     onClick={onReduce}
-                    className='
+                    className="
                         w-10
                         h-10
                         rounded-full
@@ -36,16 +43,17 @@ const Counter: React.FC<ICounter> = ({ title, subtitle, value, onChange }: ICoun
                         text-neutral-600
                         cursor-pointer
                         hover:opacity-80
-                        transition'
-                        >
-                            <AiOutlineMinus />
+                        transition
+                    "
+                >
+                    <AiOutlineMinus />
                 </div>
-                <div className='font-light text-xl text-neutral-600'>
+                <div className="font-light text-xl text-neutral-600">
                     {value}
                 </div>
                 <div
                     onClick={onAdd}
-                    className='
+                    className="
                         w-10
                         h-10
                         rounded-full
@@ -57,7 +65,8 @@ const Counter: React.FC<ICounter> = ({ title, subtitle, value, onChange }: ICoun
                         text-neutral-600
                         cursor-pointer
                         hover:opacity-80
-                        transition'
+                        transition
+                    "
                 >
                     <AiOutlinePlus />
                 </div>

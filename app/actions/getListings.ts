@@ -1,6 +1,6 @@
-import prisma from '@/app/libs/prismadb'
+import prisma from "@/app/libs/prismadb";
 
-import { IGetListings } from './Interface'
+import { IGetListings } from "./Interface";
 
 export const getListings = async (params: IGetListings) => {
     try {
@@ -18,11 +18,11 @@ export const getListings = async (params: IGetListings) => {
         let query: any = {};
 
         if(userId) {
-            query.userId = userId
+            query.userId = userId;
         }
 
         if (category) {
-            query.category = category
+            query.category = category;
         }
 
         if(guestCount) {
@@ -44,7 +44,7 @@ export const getListings = async (params: IGetListings) => {
         }
 
         if (locationValue) {
-            query.locationValue = locationValue
+            query.locationValue = locationValue;
         }
 
         if (startDate && endDate) {
@@ -71,16 +71,17 @@ export const getListings = async (params: IGetListings) => {
             orderBy: {
                 createdAt: 'desc'
             }
-        })
+        });
 
         const safeListings = listings.map((listing) => ({
             ...listing,
-            createdAt: listing.createdAt.toISOString(),
-        }))
+            createdAt: listing.createdAt.toISOString()
+        }));
 
-        return safeListings
+        return safeListings;
+
     } catch(error: any) {
-        throw new Error(error)
+        throw new Error(error);
     }
 }
 

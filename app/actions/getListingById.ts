@@ -1,5 +1,6 @@
-import prisma from '@/app/libs/prismadb';
-import { IGetListingById } from './Interface';
+import prisma from "@/app/libs/prismadb";
+
+import { IGetListingById } from "./Interface";
 
 export const getListingById = async (params: IGetListingById) => {
     try {
@@ -14,7 +15,7 @@ export const getListingById = async (params: IGetListingById) => {
             }
         });
 
-        if (!listing) return null
+        if (!listing) return null;
 
         return {
             ...listing,
@@ -26,8 +27,9 @@ export const getListingById = async (params: IGetListingById) => {
                 emailVerified: listing.user.emailVerified?.toISOString() || null
             }
         }
+        
     } catch(error: any) {
-        throw new Error(error)
+        throw new Error(error);
     }
 }
 

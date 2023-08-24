@@ -1,6 +1,6 @@
-import prisma from '@/app/libs/prismadb'
+import prisma from "@/app/libs/prismadb";
 
-import { IGetReservations } from './Interface'
+import { IGetReservations } from "./Interface";
 
 export const getReservations = async (params: IGetReservations) => {
     try {
@@ -16,7 +16,9 @@ export const getReservations = async (params: IGetReservations) => {
         }
 
         if (authorId) {
-            query.listing = { userId: authorId };
+            query.listing = {
+                userId: authorId
+            }
         }
 
         const reservations = await prisma.reservation.findMany({
@@ -40,10 +42,10 @@ export const getReservations = async (params: IGetReservations) => {
             }
         }));
 
-        return safeReservations
+        return safeReservations;
 
     } catch(error: any) {
-        throw new Error(error)
+        throw new Error(error);
     }
 }
 
